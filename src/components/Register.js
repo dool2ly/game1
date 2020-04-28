@@ -2,26 +2,71 @@ import React, { Component } from 'react'
 
 import './Menu.css'
 
-const Form = ({value, button}) => (
-  <div className="form">
-    <input value={value} />
-    <div className="menu-btn">
+
+const Form = ({placeholder, button, onChange, onSubmit, type='text'}) => (
+  <div className='form'>
+    <input onChange={onChange} placeholder={placeholder} type={type}/>
+    <div className="menu-btn" onClick={onSubmit}>
       {button}
     </div>
   </div>
 )
 
 class Register extends Component {
+  state = {
+    id: '',
+    password: ''
+  }
+
+  handleChangeId = (e) => {
+    this.setState({
+      id: e.target.value
+    })
+  }
+
+  handleChangePassword = (e) => {
+    this.setState({
+      password: e.target.value
+    })
+  }
+
+  handleCheckButton = () => {
+    const { id } = this.state
+    console.log("Check button", id)
+  }
+
+  handleSigninButton = () => {
+    const { id, password } = this.state
+    console.log("Signin BUtton", id, password)
+  }
+
   render() {
+    const { handleChangeId,
+            handleChangePassword,
+            handleCheckButton,
+            handleSigninButton
+          } = this
+
     return(
-      <div className="menu" style={{
+      <div className='menu' style={{
         width: '400px',
         height: '400px'
       }}>
         <div className='title'>Register</div>
         <div className='inputs'>
-          <Form value="TEST_1" button="Check"/>
-          <Form value="TEST_2" button="Submit"/>
+          <Form
+            placeholder='ID'
+            button='Check'
+            onChange={handleChangeId}
+            onSubmit={handleCheckButton}
+          />
+          <Form
+            placeholder='Password'
+            button='Sign-in'
+            onChange={handleChangePassword}
+            onSubmit={handleSigninButton}
+            type='password'
+          />
         </div>
         <div className='go-home'>
           <div className="menu-btn">Back</div>
