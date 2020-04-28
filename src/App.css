@@ -1,7 +1,8 @@
 .main-box {
-  border: 2px solid #e67700;
+  border: 5px solid #d26e4d;
   width: 800px;
   height: 600px;
   margin: auto;
   margin-top: 10px;
+  background-image: url('./img/800_600.png')
 }

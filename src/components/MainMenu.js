@@ -1,21 +1,23 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
+import './MainMenu.css'
+
 const MainMenuEl = ({text, link}) => (
-  <li className="main-menu-el">
-    <Link to={link}>
-      <div className="main-menu-container">{text}</div>
-    </Link>
-  </li>
+  <Link to={link} style={{ textDecoration: 'none' }}>
+    <div className="menu-el">
+      <p>{text}</p>
+    </div>
+  </Link>
 )
 
 class MainMenu extends Component {
   render() {
     return(
-      <ul>
+      <div className="menu">
         <MainMenuEl text={"New Game"} link="/register" />
         <MainMenuEl text={"Load Game"} link="/login" />
-      </ul>
+      </div>
     )
   }
 }
