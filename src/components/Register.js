@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
+import store from '../config/store'
 import './Menu.css'
-
 
 const Form = ({placeholder, button, onChange, onSubmit, type='text'}) => (
   <div className='form'>
@@ -30,9 +30,18 @@ class Register extends Component {
     })
   }
 
-  handleCheckButton = () => {
+  handleCheckButton = (e) => {
     const { id } = this.state
-    console.log("Check button", id)
+    console.log("Check button")
+
+    store.dispatch({
+      type: 'OPEN_ALERT',
+      payload: {
+        title: 'test2',
+        message: 'test22',
+        show: true
+      }
+    })
   }
 
   handleSigninButton = () => {
@@ -59,6 +68,7 @@ class Register extends Component {
             button='Check'
             onChange={handleChangeId}
             onSubmit={handleCheckButton}
+            // onPortal={}
           />
           <Form
             placeholder='Password'

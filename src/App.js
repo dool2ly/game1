@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { BrowserRouter, Route } from 'react-router-dom'
 
+import MyPortal from './features/MyPortal'
 import MainMenu from './components/MainMenu'
 import Register from './components/Register'
 import Login from './components/Login'
@@ -16,9 +17,10 @@ class App extends Component {
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
         </div>
+        <MyPortal />  // For popup
       </BrowserRouter>
     )
   }
 }
 
-export default App;
+export default App
