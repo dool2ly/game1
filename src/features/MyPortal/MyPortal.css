@@ -8,12 +8,43 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
 }
 
-.MyPortal .content {
-  background: white;
+.alert-box {
+  background-color: #452000;
   padding: 1rem;
   width: 400px;
   height: auto;
+}
+
+.alert-title {
+  font-size: 40px;
+  /* background-color: white; */
+  color: #cc9a69;
+  font-weight: 900;
+}
+
+.alert-msg {
+  /* background-color: blue; */
+  color: #cc9a69;
+  font-size: 28px;
+  margin: 10px;
+  margin-bottom: 30px;
+}
+
+.alert-btn {
+  border-radius: 5px;
+  border: 1px solid black;
+  padding: 2px;
+  background: #cc9a69;
+  font-size: 28px;
+  text-align: center;
+  font-weight: 900;
+  color: #452000;
+}
+
+.alert-btn:hover {
+  background-color: #5b2d09;
+  color: white;
+  cursor: pointer;
 }

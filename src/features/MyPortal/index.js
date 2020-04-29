@@ -2,13 +2,16 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 
 import './MyPortal.css';
+import * as actions from '../../config/actions'
 
 const AlertBox = ({ title, message, onClick }) => (
   <div className="MyPortal">
-    <div className="content">
-      <h3>{title}</h3>
-      <p>{message}</p>
-      <button onClick={onClick}>OK</button>
+    <div className="alert-box">
+
+      <div className='alert-title'>{title}</div>
+      <div className='alert-msg'>{message}</div>
+
+      <div className='alert-btn' onClick={onClick}>OK</div>
     </div>
   </div>
 )
@@ -31,7 +34,7 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleClick: () => {dispatch({type:'CLOSE_ALERT'})}
+    handleClick: () => dispatch(actions.closeAlert())
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(MyPortal)

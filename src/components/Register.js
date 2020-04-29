@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import store from '../config/store'
+import * as actions from '../config/actions'
 import './Menu.css'
 
 const Form = ({placeholder, button, onChange, onSubmit, type='text'}) => (
@@ -33,14 +34,18 @@ class Register extends Component {
   handleCheckButton = (e) => {
     const { id } = this.state
     console.log("Check button")
-
-    store.dispatch({
-      type: 'OPEN_ALERT',
-      payload: {
-        title: 'test2',
-        message: 'test22'
-      }
-    })
+    store.dispatch(actions.createAlert({ title: 'title', message: 'message' }))
+    // store.dispatch({
+    //   type: 'CREATE_ALERT',
+    //   payload: {
+    //     title: 'test2',
+    //     message: 'test22'
+    //   }
+    // })
+    // fetch('api/auth/register')
+    //     .then(res=>res.json())
+    //     .then(data=>console.log(data))
+    //     .catch(err=>console.log(err))
   }
 
   handleSigninButton = () => {

@@ -1,3 +1,5 @@
+import { CREATE_ALERT, CLOSE_ALERT } from '../../config/actions'
+
 const initialState = {
   title: '',
   message: '',
@@ -6,12 +8,12 @@ const initialState = {
 
 const portalReducer = (state=initialState, action) => {
   switch(action.type) {
-    case 'OPEN_ALERT':
+    case CREATE_ALERT:
       return {
         ...action.payload,
         show: true
       }
-    case 'CLOSE_ALERT':
+    case CLOSE_ALERT:
       return {
         title: '',
         message: '',
