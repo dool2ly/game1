@@ -17,7 +17,7 @@ class App extends Component {
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
         </div>
-        <MyPortal />  // For popup
+        <MyPortal /> {/* For popup*/}
       </BrowserRouter>
     )
   }

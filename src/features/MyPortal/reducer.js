@@ -1,6 +1,6 @@
 const initialState = {
-  title: 'test_title',
-  message: 'test_message',
+  title: '',
+  message: '',
   show: false
 }
 
@@ -8,7 +8,14 @@ const portalReducer = (state=initialState, action) => {
   switch(action.type) {
     case 'OPEN_ALERT':
       return {
-        ...action.payload
+        ...action.payload,
+        show: true
+      }
+    case 'CLOSE_ALERT':
+      return {
+        title: '',
+        message: '',
+        show: false
       }
     default:
       return state

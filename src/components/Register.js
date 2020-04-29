@@ -38,8 +38,7 @@ class Register extends Component {
       type: 'OPEN_ALERT',
       payload: {
         title: 'test2',
-        message: 'test22',
-        show: true
+        message: 'test22'
       }
     })
   }

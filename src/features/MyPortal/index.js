@@ -3,32 +3,35 @@ import { connect } from 'react-redux'
 
 import './MyPortal.css';
 
-const AlertBox = ({ title, message }) => (
+const AlertBox = ({ title, message, onClick }) => (
   <div className="MyPortal">
     <div className="content">
       <h3>{title}</h3>
       <p>{message}</p>
-      <button>OK</button>
+      <button onClick={onClick}>OK</button>
     </div>
   </div>
 )
 
 class MyPortal extends Component {
-
   render() {
-    const { title, message, show } = this.props
+    const { title, message, show, handleClick } = this.props
     return (
       <div>
-        {show ? <AlertBox title={title} message={message}/> : ''}
+        {show ? <AlertBox title={title} message={message} onClick={handleClick}/> : ''}
       </div>
     );
   }
 };
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
   return {
     ...state.portal
   }
 }
-
-export default connect(mapStateToProps)(MyPortal)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    handleClick: () => {dispatch({type:'CLOSE_ALERT'})}
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(MyPortal)
