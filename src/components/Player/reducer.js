@@ -1,8 +1,11 @@
 import { MOVE_PLAYER } from '../../config/actions'
 
 const initialState = {
-  position: [0, 0]
-};
+  position: [0, 0],
+  spriteLocation: '0px 0px',
+  direction: 'SOUTH',
+  walkIndex: 0
+}
 
 const playerReducer = (state = initialState, action) => {
   switch(action.type) {
@@ -13,6 +16,6 @@ const playerReducer = (state = initialState, action) => {
     default:
       return state;
   }
-};
+}
 
 export default playerReducer;

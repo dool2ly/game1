@@ -14,11 +14,14 @@ export const closeAlert = () => {
 }
 
 export const MOVE_PLAYER = 'MOVE_PLAYER'
-export const movePlayer = (position) => {
+export const movePlayer = (position, direction, walkIndex, spriteLocation) => {
   return {
     type: MOVE_PLAYER,
     payload: {
-      position: position
+      position,
+      direction,
+      walkIndex,
+      spriteLocation
     }
   }
 }
