@@ -1,4 +1,7 @@
 const Users = require('../../../models/user.js')
+
+// English, Number regular
+const regEngNum = /^[a-zA-Z0-9]*$/
 /*
   POST /api/auth/register
   {
@@ -9,10 +12,9 @@ const Users = require('../../../models/user.js')
 exports.register = (req, res) => {
   const { username, password } = req.body
 
-  // Input validation
-  const engReg = /^[a-zA-Z0-9]*$/ // English, Number
-
-  if (!engReg.test(username)) {
+  /* == INPUT VALIDATION == */
+  // check id
+  if (!regEngNum.test(username)) {
     res.status(400).json({ success: false, message: 'only use ENG'})
     return
   }
@@ -38,4 +40,38 @@ exports.register = (req, res) => {
       res.status(400).json({ success: false })
     }
   })
+}
+
+/*
+  GET /api/auth/checkId
+  {
+    username
+  }
+*/
+exports.checkId = (req, res) =>{
+  const username = req.params.id
+
+  /* == INPUT VALIDATION == */
+  // check id
+  if (!regEngNum.test(username)) {
+    res.status(400).json({ success: false, message: 'only use ENG'})
+    return
+  }
+
+  /* == REGISTRATION PROCESSING == */
+  // Find user
+  Users.findOne({ username }, (err, ret) => {
+    if (err) {
+      // query failure
+      res.status(400).json({ success: false, message: 'DB query failure'})
+    }
+    if (ret) {
+      // user exists
+      res.status(200).json({ success: true, message: 'exists'})
+    } else {
+      // user not exists
+      res.status(200).json({ success: true, message: 'not exists'})
+    }
+  })
+
 }
