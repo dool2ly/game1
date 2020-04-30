@@ -3,9 +3,11 @@ const express = require('express')
 const helmet = require('helmet')
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
+const mongoose = require('mongoose')
 
 /* == LOAD THE CONFIG == */
-const port = process.env.PORT || 81
+const config = require('./config')
+const port = process.env.PORT || 80
 
 /* == EXPRESS CONFIGURATION == */
 const app = express()
@@ -24,3 +26,11 @@ app.use('/api', require('./router/api'))
 
 // server open
 app.listen(port, () => { console.log(`Express is running on port ${port}`) })
+
+/* == MONGOOSE SETTING AND CONNECTING == */
+mongoose.Promise = global.Promise
+mongoose.connect(config.mongodbUri, { useNewUrlParser: true, useUnifiedTopology: true })
+
+const db = mongoose.connection
+db.on('error', (err) => console.log('Connection error:' + err))
+db.once('open', () => { console.log('Connected to mongodb server') })

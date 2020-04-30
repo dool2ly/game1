@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import axios from 'axios'
 
 import store from '../config/store'
 import * as actions from '../config/actions'
@@ -32,25 +33,19 @@ class Register extends Component {
   }
 
   handleCheckButton = (e) => {
-    const { id } = this.state
+    const { id, password } = this.state
     console.log("Check button")
+
     store.dispatch(actions.createAlert({ title: 'title', message: 'message' }))
-    // store.dispatch({
-    //   type: 'CREATE_ALERT',
-    //   payload: {
-    //     title: 'test2',
-    //     message: 'test22'
-    //   }
-    // })
-    // fetch('api/auth/register')
-    //     .then(res=>res.json())
-    //     .then(data=>console.log(data))
-    //     .catch(err=>console.log(err))
+
   }
 
   handleSigninButton = () => {
     const { id, password } = this.state
     console.log("Signin BUtton", id, password)
+    axios.post('api/auth/register', { username: id, password: password })
+    .then( response => console.log(response))
+    .catch( res => console.log(res))
   }
 
   render() {
