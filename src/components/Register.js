@@ -36,7 +36,8 @@ class Register extends Component {
   handleCheckButton = (e) => {
     const { id } = this.state
 
-    axios.get(`api/auth/checkId/${id}`)
+    // axios.get(`api/auth/checkId/${id}`)
+    axios.post('api/auth/checkId', { username: id} )
     .then( (res) => {
       const contents = { title: 'Check ID' }
 
@@ -57,7 +58,7 @@ class Register extends Component {
     const { id, password } = this.state
 
     axios.post('api/auth/register', { username: id, password: password })
-    .then( res => {
+    .then( (res) => {
       if (res.data.success) {
         this.props.history.push('/game')
       }

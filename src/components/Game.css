@@ -1,0 +1,15 @@
+.game {
+  display: flex;
+  height: 100%;
+}
+
+.world {
+  position: relative;
+  width: 600px;
+  background-color: #c77a35;
+}
+
+.info {
+  width: 200px;
+  background-color: #5e1f02;
+}

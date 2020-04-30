@@ -49,14 +49,13 @@ exports.register = (req, res) => {
 }
 
 /*
-  GET /api/auth/checkId
+  POST /api/auth/checkId
   {
     username
   }
 */
 exports.checkId = (req, res) =>{
-  const username = req.params.id
-
+  const { username } = req.body
   /* == INPUT VALIDATION == */
   // check empty
   if (!username) {
