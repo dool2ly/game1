@@ -1,5 +1,4 @@
 export const CREATE_ALERT = 'CREATE_ALERT'
-
 export const createAlert = (contents) => {
   return {
     type: CREATE_ALERT,
@@ -8,9 +7,18 @@ export const createAlert = (contents) => {
 }
 
 export const CLOSE_ALERT = 'CLOSE_ALERT'
-
 export const closeAlert = () => {
   return {
     type: CLOSE_ALERT
+  }
+}
+
+export const MOVE_PLAYER = 'MOVE_PLAYER'
+export const movePlayer = (position) => {
+  return {
+    type: MOVE_PLAYER,
+    payload: {
+      position: position
+    }
   }
 }
