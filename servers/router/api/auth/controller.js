@@ -8,11 +8,17 @@ const regEngNum = /^[a-zA-Z0-9]*$/
     username,
     password
   }
+
 */
 exports.register = (req, res) => {
   const { username, password } = req.body
 
   /* == INPUT VALIDATION == */
+  // check empty
+  if (!username || !password) {
+    res.status(400).json({ success: false, message: 'empty input'})
+    return
+  }
   // check id
   if (!regEngNum.test(username)) {
     res.status(400).json({ success: false, message: 'only use ENG'})
@@ -34,7 +40,7 @@ exports.register = (req, res) => {
   // Process error
   .catch((error) => {
     if (error.message === 'User exists') {
-      res.status(200).json({ success: false, message: error.message })
+      res.status(400).json({ success: false, message: error.message })
     } else {
       console.log(error)
       res.status(400).json({ success: false })
@@ -52,6 +58,11 @@ exports.checkId = (req, res) =>{
   const username = req.params.id
 
   /* == INPUT VALIDATION == */
+  // check empty
+  if (!username) {
+    res.status(400).json({ success: false, message: 'empty input'})
+    return
+  }
   // check id
   if (!regEngNum.test(username)) {
     res.status(400).json({ success: false, message: 'only use ENG'})

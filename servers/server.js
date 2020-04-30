@@ -7,7 +7,7 @@ const mongoose = require('mongoose')
 
 /* == LOAD THE CONFIG == */
 const config = require('./config')
-const port = process.env.PORT || 80
+const port = process.env.PORT || 81
 
 /* == EXPRESS CONFIGURATION == */
 const app = express()

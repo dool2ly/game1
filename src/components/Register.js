@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 import store from '../config/store'
 import * as actions from '../config/actions'
@@ -33,19 +34,38 @@ class Register extends Component {
   }
 
   handleCheckButton = (e) => {
-    const { id, password } = this.state
-    console.log("Check button")
+    const { id } = this.state
 
-    store.dispatch(actions.createAlert({ title: 'title', message: 'message' }))
+    axios.get(`api/auth/checkId/${id}`)
+    .then( (res) => {
+      const contents = { title: 'Check ID' }
 
+      if (res.data.message === 'exists') {
+        contents['message'] = "ID used."
+      } else {
+        contents['message'] = "ID not used."
+      }
+      store.dispatch(actions.createAlert(contents))
+    })
+    .catch( (err) => {
+      const message = err.response.data.message || 'error occured'
+      store.dispatch(actions.createAlert({ title: 'Check ID', message: message }))
+    })
   }
 
   handleSigninButton = () => {
     const { id, password } = this.state
-    console.log("Signin BUtton", id, password)
+
     axios.post('api/auth/register', { username: id, password: password })
-    .then( response => console.log(response))
-    .catch( res => console.log(res))
+    .then( res => {
+      if (res.data.success) {
+        this.props.history.push('/game')
+      }
+    })
+    .catch( (err) => {
+      const message = err.response.data.message || 'error occured'
+      store.dispatch(actions.createAlert({ title: 'Sign-in', message: message }))
+    })
   }
 
   render() {
@@ -78,7 +98,9 @@ class Register extends Component {
           />
         </div>
         <div className='go-home'>
-          <div className="menu-btn">Back</div>
+          <Link to="/" style={{ textDecoration: 'none' }}>
+            <div className="menu-btn">Back</div>
+          </Link>
         </div>
       </div>
     )
