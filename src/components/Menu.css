@@ -29,17 +29,20 @@
 
 .form{
   display: flex;
-  justify-content: space-around;
 }
 
 .form input{
-  width: 60%;
   font-size: 24px;
+  height: 40px;
+  width: 60%;
+  margin-left: 10px
 }
 
 .form .menu-btn{
   width: 30%;
+  margin-left: 10px
 }
+
 .title {
   color: #cc9a69;
   font-size: 40px;

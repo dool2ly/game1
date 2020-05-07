@@ -5,15 +5,7 @@ import { Link } from 'react-router-dom'
 import store from '../config/store'
 import * as actions from '../config/actions'
 import './Menu.css'
-
-const Form = ({placeholder, button, onChange, onSubmit, type='text'}) => (
-  <div className='form'>
-    <input onChange={onChange} placeholder={placeholder} type={type}/>
-    <div className="menu-btn" onClick={onSubmit}>
-      {button}
-    </div>
-  </div>
-)
+import Form from './Form'
 
 class Register extends Component {
   state = {
@@ -58,12 +50,12 @@ class Register extends Component {
     const { id, password } = this.state
 
     axios.post('api/auth/register', { username: id, password: password })
-    .then( (res) => {
+    .then((res) => {
       if (res.data.success) {
         this.props.history.push('/game')
       }
     })
-    .catch( (err) => {
+    .catch((err) => {
       const message = err.response.data.message || 'error occured'
       store.dispatch(actions.createAlert({ title: 'Sign-in', message: message }))
     })
@@ -88,7 +80,6 @@ class Register extends Component {
             button='Check'
             onChange={handleChangeId}
             onSubmit={handleCheckButton}
-            // onPortal={}
           />
           <Form
             placeholder='Password'

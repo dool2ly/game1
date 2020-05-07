@@ -1,8 +1,7 @@
-const a = [1, 2,3,4]
-if (a.indexOf(40)) {
-	console.log('true')
-} else {
-	console.log('false')
+const a = "hi"
+
+function tt() {
+	console.log(a)
 }
 
-console.log(a.indexOf(40))
+tt()

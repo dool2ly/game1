@@ -85,3 +85,45 @@ exports.checkId = (req, res) =>{
   })
 
 }
+
+/*
+  POST /api/auth/login
+  {
+    username,
+    password
+  }
+*/
+exports.login = (req, res) => {
+  const { username, password } = req.body
+
+  /* == INPUT VALIDATION == */
+  // check empty
+  if (!username || !password) {
+    res.status(400).json({ success: false, message: 'empty input'})
+    return
+  }
+  // check id
+  if (!regEngNum.test(username)) {
+    res.status(400).json({ success: false, message: 'only use ENG'})
+    return
+  }
+
+  /* == LOGIN PROCESSING == */
+  Users.findOne({ username })
+  .exec()
+  .then((user) => {
+    if (!user || !user.comparePassword(password)) throw new Error('Information does not match')
+    /* -- TODO: return jwt token -- */
+  })
+  // repond successful
+  .then(() => res.json({ success: true }))
+  // repond failure
+  .catch((err) => {
+    if (err.message === 'Information does not match') {
+      res.status(400).json({ success: false, message: err.message })
+    } else {
+      console.log(err)
+      res.status(400).json({ success: false })
+    }
+  })
+}
