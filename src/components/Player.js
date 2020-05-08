@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import handleMovement from './movement'
-import walkSprite from '../../img/player_baram_40_60.png'
+import walkSprite from '../img/player_baram_40_60.png'
 
 function Player(props) {
   const { position, spriteLocation } = props;

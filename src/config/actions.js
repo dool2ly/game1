@@ -1,27 +1,35 @@
-export const CREATE_ALERT = 'CREATE_ALERT'
+import * as actionTypes from './constants'
+
 export const createAlert = (contents) => {
   return {
-    type: CREATE_ALERT,
+    type: actionTypes.CREATE_ALERT,
     payload: contents
   }
 }
 
-export const CLOSE_ALERT = 'CLOSE_ALERT'
 export const closeAlert = () => {
   return {
-    type: CLOSE_ALERT
+    type: actionTypes.CLOSE_ALERT
   }
 }
 
-export const MOVE_PLAYER = 'MOVE_PLAYER'
 export const movePlayer = (position, direction, walkIndex, spriteLocation) => {
   return {
-    type: MOVE_PLAYER,
+    type: actionTypes.MOVE_PLAYER,
     payload: {
       position,
       direction,
       walkIndex,
       spriteLocation
+    }
+  }
+}
+
+export const loginSuccess = (token) => {
+  return {
+    type: actionTypes.LOGIN_SUCCESS,
+    payload: {
+      token
     }
   }
 }

@@ -11,7 +11,7 @@ class Login extends Component {
     id: '',
     password: ''
   }
-  
+
   handleChangeId = (e) => {
     this.setState({
       id: e.target.value
@@ -30,11 +30,13 @@ class Login extends Component {
     axios.post('api/auth/login', { username: id, password: password })
     .then((res) => {
       if (res.data.success) {
+        store.dispatch(actions.loginSuccess(res.data.token))
         this.props.history.push('/game')
       }
     })
     .catch((err) => {
       const message = err.response.data.message || 'error occured'
+      console.log(err)
       store.dispatch(actions.createAlert({ title: 'Login', message: message }))
     })
 

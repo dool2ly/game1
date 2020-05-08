@@ -1,7 +1,30 @@
 const Users = require('../../../models/user.js')
+const jwt = require('jsonwebtoken')
 
 // English, Number regular
 const regEngNum = /^[a-zA-Z0-9]*$/
+const publishJWT = (id, username, secretKey) => {
+  return new Promise((resolve, reject) =>{
+    jwt.sign(
+      {
+        _id: id,
+        username: username
+      },
+      secretKey,
+      {
+        expiresIn: '1d',
+        issuer: 'dool2ly',
+        subject: 'userVerify'
+      },
+      (err, token) => {
+        if (err) reject (err)
+        resolve(token)
+      }
+    )
+  })
+}
+
+
 /*
   POST /api/auth/register
   {
@@ -12,6 +35,7 @@ const regEngNum = /^[a-zA-Z0-9]*$/
 */
 exports.register = (req, res) => {
   const { username, password } = req.body
+  const secretKey = req.app.get('jwt-secret')
 
   /* == INPUT VALIDATION == */
   // check empty
@@ -33,10 +57,13 @@ exports.register = (req, res) => {
     if (user) throw new Error('User exists')
     return Users.createUser(username, password)
   })
-
-  // Repond success
-  .then(user => res.json({ success: true }))
-
+  .then(user => {
+    return publishJWT(user._id, user.username, secretKey)
+  })
+  // Repond result and JWT
+  .then(token => {
+    res.json({ success: true, token })
+  })
   // Process error
   .catch((error) => {
     if (error.message === 'User exists') {
@@ -95,6 +122,7 @@ exports.checkId = (req, res) =>{
 */
 exports.login = (req, res) => {
   const { username, password } = req.body
+  const secretKey = req.app.get('jwt-secret')
 
   /* == INPUT VALIDATION == */
   // check empty
@@ -112,11 +140,13 @@ exports.login = (req, res) => {
   Users.findOne({ username })
   .exec()
   .then((user) => {
+    // id & pw verify
     if (!user || !user.comparePassword(password)) throw new Error('Information does not match')
-    /* -- TODO: return jwt token -- */
+
+    return publishJWT(user._id, user.username, secretKey)
   })
   // repond successful
-  .then(() => res.json({ success: true }))
+  .then((token) => res.json({ success: true, token }))
   // repond failure
   .catch((err) => {
     if (err.message === 'Information does not match') {

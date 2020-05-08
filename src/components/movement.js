@@ -1,11 +1,11 @@
-import { movePlayer } from '../../config/actions'
-import store from '../../config/store'
+import { movePlayer } from '../config/actions'
+import store from '../config/store'
 import {
   PLAYER_HEIGHT,
   PLAYER_WIDTH,
   MAP_HEIGHT,
   MAP_WIDTH
-} from '../../config/constants'
+} from '../config/constants'
 
 export default function handleMovement(player) {
 

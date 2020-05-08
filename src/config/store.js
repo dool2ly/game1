@@ -1,11 +1,13 @@
 import { createStore, combineReducers } from 'redux'
 
-import portal from '../components/MyPortal/reducer'
-import player from '../components/Player/reducer'
+import portal from '../reducers/handleMyPortal'
+import player from '../reducers/handlePlayer'
+import user from '../reducers/handleUser'
 
 const rootReducer = combineReducers({
   portal: portal,
-  player: player
+  player: player,
+  user: user
 })
 
 const store = createStore(

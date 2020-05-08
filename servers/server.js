@@ -24,6 +24,9 @@ app.use(morgan('dev'))
 // configure api router
 app.use('/api', require('./router/api'))
 
+// set the encrypt key for jwt
+app.set('jwt-secret', config.jwtSecretKey)
+
 // server open
 app.listen(port, () => { console.log(`Express is running on port ${port}`) })
 

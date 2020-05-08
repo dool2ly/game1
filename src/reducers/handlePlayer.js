@@ -1,4 +1,4 @@
-import { MOVE_PLAYER } from '../../config/actions'
+import { MOVE_PLAYER } from '../config/constants'
 
 const initialState = {
   position: [0, 0],

@@ -1,4 +1,4 @@
-import { CREATE_ALERT, CLOSE_ALERT } from '../../config/actions'
+import { CREATE_ALERT, CLOSE_ALERT } from '../config/constants'
 
 const initialState = {
   title: '',
