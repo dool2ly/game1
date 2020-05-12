@@ -14,13 +14,30 @@
   background-color: #5e1f02;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 
   .inventory {
-    height: 90%;
+    height: 70%;
   }
 
-  .quit-btn {
-    height: 10%;
+  .user-info {
+    height: 15%;
+  }
+
+  .btn-container {
+    display: flex;
+    padding: 5px;
+    height: 15%;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    .menu-btn {
+      border-radius: 0px;
+      font-size: 1.5rem;
+      height: 40px;
+    }
+
+    .menu-btn:hover {
+      background-color: #5e1f02;
+    }
   }
 }

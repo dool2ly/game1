@@ -27,8 +27,13 @@ class Register extends Component {
   handleCheckButton = (e) => {
     const { id } = this.state
 
-    axios.post('api/auth/checkId', { username: id} )
-    .then( (res) => {
+    if (!id){
+      store.dispatch(actions.createAlert({ title: 'Check ID', message: "Empty ID" }))
+      return
+    }
+
+    axios.get('api/auth/check/' + id)
+    .then((res) => {
       const contents = { title: 'Check ID' }
 
       if (res.data.message === 'exists') {
@@ -38,7 +43,7 @@ class Register extends Component {
       }
       store.dispatch(actions.createAlert(contents))
     })
-    .catch( (err) => {
+    .catch((err) => {
       const message = err.response.data.message || 'error occured'
       store.dispatch(actions.createAlert({ title: 'Check ID', message: message }))
     })
