@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 
-import './MyPortal.css';
+import '../scss/MyPortal.scss';
 import * as actions from '../config/actions'
 
 const AlertBox = ({ title, message, onClick }) => (

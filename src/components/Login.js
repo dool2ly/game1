@@ -53,8 +53,8 @@ class Login extends Component {
         width: '400px',
         height: '400px'
       }}>
-        <div className='title'>Login</div>
-        <div className='inputs'>
+        <div className='menu-title'>Login</div>
+        <div className='forms'>
           <Form
             placeholder='ID'
             button='Login'

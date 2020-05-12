@@ -7,7 +7,7 @@ import Register from './components/Register'
 import Login from './components/Login'
 import Game from './components/Game'
 
-import './App.css'
+import './scss/Menu.scss'
 
 class App extends Component {
   render() {

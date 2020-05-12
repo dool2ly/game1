@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 
 import store from '../config/store'
 import * as actions from '../config/actions'
-import './Menu.css'
 import Form from './Form'
 
 class Register extends Component {
@@ -74,8 +73,8 @@ class Register extends Component {
         width: '400px',
         height: '400px'
       }}>
-        <div className='title'>Register</div>
-        <div className='inputs'>
+        <div className='menu-title'>Register</div>
+        <div className='forms'>
           <Form
             placeholder='ID'
             button='Check'
