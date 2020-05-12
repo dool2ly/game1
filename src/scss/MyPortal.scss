@@ -1,3 +1,16 @@
+@import 'MenuButton';
+@keyframes popUP {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 .MyPortal {
   background: rgba(0, 0, 0, 0.5);
   position: fixed;
@@ -16,6 +29,7 @@
   width: 400px;
   height: auto;
   user-select: none;
+  animation: 300ms ease-out popUp;
 }
 
 .alert-title {
@@ -31,19 +45,21 @@
   margin-bottom: 30px;
 }
 
-.alert-btn {
-  border-radius: 5px;
-  border: 1px solid black;
-  padding: 2px;
-  background: #cc9a69;
-  font-size: 28px;
-  text-align: center;
-  font-weight: 900;
-  color: #452000;
-}
 
-.alert-btn:hover {
-  background-color: #5b2d09;
-  color: white;
-  cursor: pointer;
-}
+// .alert-btn {
+//   border-radius: 5px;
+//   border: 1px solid black;
+//   padding: 2px;
+//   background: #cc9a69;
+//   font-size: 28px;
+//   text-align: center;
+//   font-weight: 900;
+//   color: #452000;
+// }
+//
+// .alert-btn:hover {
+//   background-color: #5b2d09;
+//   color: white;
+//   cursor: pointer;
+//   transition: 400ms ease all;
+// }

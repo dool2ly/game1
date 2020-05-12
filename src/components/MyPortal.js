@@ -11,7 +11,7 @@ const AlertBox = ({ title, message, onClick }) => (
       <div className='alert-title'>{title}</div>
       <div className='alert-msg'>{message}</div>
 
-      <div className='alert-btn' onClick={onClick}>OK</div>
+      <div className='menu-btn' onClick={onClick}>OK</div>
     </div>
   </div>
 )

@@ -1,3 +1,13 @@
+@import 'MenuButton';
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .main-box{
   border: 5px solid #452000;
   width: 800px;
@@ -5,70 +15,53 @@
   margin: auto;
   margin-top: 10px;
   background-image: url('../img/800_600.png');
+}
 
-  .menu {
-    margin: auto;
-    margin-top: 100px;
-    background-color: #452000;
+.menu {
+  margin: auto;
+  margin-top: 100px;
+  background-color: #452000;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.16), 0 5px 10px rgba(0,0,0,0.23);
+  animation: 400ms ease-out fadeIn;
+}
+
+.forms {
+  display: flex;
+  flex-direction: column;
+  height: 30%;
+  justify-content: space-around;
+
+  .form {
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.16), 0 5px 10px rgba(0,0,0,0.23);
 
-    .menu-title{
-      color: #cc9a69;
-      font-size: 40px;
-      user-select: none;
+    input{
+      font-size: 24px;
+      height: 40px;
+      width: 60%;
+      margin-left: 10px
     }
 
     .menu-btn {
-      border-radius: 5px;
-      border: 1px solid black;
-      padding: 2px;
-      background: #cc9a69;
-      font-size: 28px;
-      text-align: center;
-      font-weight: 900;
-      color: #452000;
-      user-select: none;
-    }
-
-    .menu-btn:hover {
-      background-color: #5b2d09;
-      color: white;
-      cursor: pointer;
-    }
-
-    .forms {
-      display: flex;
-      flex-direction: column;
-      height: 30%;
-      justify-content: space-around;
-
-      .form {
-        display: flex;
-
-        input{
-          font-size: 24px;
-          height: 40px;
-          width: 60%;
-          margin-left: 10px
-        }
-
-        .menu-btn {
-          width: 30%;
-          margin-left: 10px
-        }
-      }
-    }
-
-    .go-home {
-      display: flex;
-      height: 30%;
-      align-self: flex-end;
-      align-items: flex-end;
-      padding-right: 10px;
+      width: 30%;
+      margin-left: 10px
     }
   }
+}
+
+.go-home {
+  display: flex;
+  height: 30%;
+  align-self: flex-end;
+  align-items: flex-end;
+  padding-right: 10px;
+}
+
+.menu-title{
+  color: #cc9a69;
+  font-size: 40px;
+  user-select: none;
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
-import '../scss/Menu.scss'
+// import '../scss/Menu.scss'
 
 const MainMenuEl = ({text, link}) => (
   <Link to={link} style={{ textDecoration: 'none' }}>
